@@ -45,7 +45,7 @@ export class PrepareJsonService {
             }
         });
 
-        return values;
+        return values.slice(1);
     }
 
 }

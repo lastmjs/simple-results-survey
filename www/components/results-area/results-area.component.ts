@@ -7,16 +7,16 @@ import 'rxjs/add/operator/map';
 	selector: 'results-area',
 	template: `
 		<div style="display: flex; flex-direction: row">
-			<div *ngFor="#title of titles">
-				<div [innerHTML]="title"></div>
+			<div *ngFor="#title of titles" style="flex: 1">
+				<div [innerHTML]="title" style="color: grey; font-size: .75em"></div>
 			</div>
 		</div>
 
-		<!--<div style="display: flex; flex-direction: row">
-			<div *ngFor="#value of values">
-				<div [innerHTML]="value"></div>
+		<div *ngFor="#items of values" style="padding: 5px; box-shadow: 0px 0px 0px 1px grey">
+			<div style="display: flex; flex-direction: row">
+				<div *ngFor="#value of items" [innerHTML]="value" style="flex: 1"></div>
 			</div>
-		</div>-->
+		</div>
     `
 })
 
@@ -32,8 +32,6 @@ export class ResultsAreaComponent {
 			.subscribe((data) => {
 				this.titles = prepareJson.getTitles(data.feed.entry);
 				this.values = prepareJson.getValues(data.feed.entry);
-
-				console.log(this.values);
 			});
 
 	}
