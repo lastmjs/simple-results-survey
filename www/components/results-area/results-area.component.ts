@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 			</div>
 		</div>
 
-		<div *ngFor="#items of rowValues" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(items)">
+		<div *ngFor="#items of rowValues; #i = index" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(i)">
 			<div style="display: flex; flex-direction: row">
 				<div *ngFor="#value of items" [innerHTML]="value" style="flex: 1"></div>
 			</div>
@@ -47,10 +47,11 @@ export class ResultsAreaComponent {
 
 	}
 
-	rowClick(items) {
+	rowClick(valuesIndex) {
 		this.router.navigate([
 			'Detail', {
-				info: items
+				titles: this.allTitles,
+				values: this.allValues[valuesIndex]
 			}
 		]);
 	}

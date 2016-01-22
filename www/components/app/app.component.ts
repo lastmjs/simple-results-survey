@@ -11,7 +11,7 @@ import {ResultDetailComponent} from '../result-detail/result-detail.component.ts
 
 @RouteConfig([
 	{ path: '/', name: 'Results', component: ResultsAreaComponent },
-	{ path: '/detail/:info', name: 'Detail', component:  ResultDetailComponent }
+	{ path: '/detail/:titles/:values', name: 'Detail', component:  ResultDetailComponent }
 ])
 
 export class AppComponent {
