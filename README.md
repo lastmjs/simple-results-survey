@@ -1,6 +1,6 @@
 # sheets-webpage
 
-This repository will allow you to quickly publish a website that cleanly displays data from Google Forms.
+This repository will allow you to quickly publish a website for displaying Google Forms data.
 
 ## Setup Instructions
 * Sign up for a GitHub account
