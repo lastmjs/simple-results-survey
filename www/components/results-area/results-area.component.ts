@@ -33,7 +33,7 @@ export class ResultsAreaComponent {
 
 		this.router = router;
 
-		http.get('sheets-url.txt')
+		http.get('sheets-webpage/sheets-url.txt')
 			.map((res) => res.text())
 			.subscribe((data) => {
 

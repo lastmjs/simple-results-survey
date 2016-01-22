@@ -22,7 +22,7 @@ export class AppComponent {
 
 	constructor(http: Http) {
 
-		http.get('page-title.txt')
+		http.get('sheets-webpage/page-title.txt')
 			.map((res) => res.text())
 			.subscribe((data) => {
 				this.pageTitle = data;
