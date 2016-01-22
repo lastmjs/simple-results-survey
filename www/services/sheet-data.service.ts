@@ -4,13 +4,21 @@ import {Injectable} from 'angular2/core';
 export class SheetDataService {
 
     constructor() {
-        console.log(Tabletop);
     }
 
-    getValues() {
-        return data;
+    getAllValues(sheetUrl) {
+        return new Promise(function(resolve, reject) {
+            Tabletop.init({
+                key: sheetUrl,
+                callback: function(data, tableTop) {
+                    resolve(data);
+                },
+                simpleSheet: true
+            });
+        });
     }
 
-    getTitles(values) {
+    getRowValues(values) {
+
     }
 }

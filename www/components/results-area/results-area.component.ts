@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Router} from 'angular2/router';
-import {PrepareSheetDataService} from '../../services/prepare-sheet-data.service.ts';
+import {SheetDataService} from '../../services/sheet-data.service.ts';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -23,42 +23,20 @@ import 'rxjs/add/operator/map';
 
 export class ResultsAreaComponent {
 
-	public rowTitles;
 	public rowValues;
 
-	private allTitlesAndValues;
+	private allValues;
 	private router: Router;
 
-	constructor(http: Http, prepareJson: PrepareSheetDataService, router: Router) {
+	constructor(http: Http, sheetDataService: SheetDataService, router: Router) {
 
 		this.router = router;
 
 		http.get('sheets-url.txt')
 			.map((res) => res.text())
-			.subscribe((data) => {
-
-				const sheetPublicKey = /d\/(.*)\/pubhtml/.exec(data)[1];
-
-				http.get(`https://spreadsheets.google.com/feeds/cells/${sheetPublicKey}/1/public/basic?alt=json&max-row=1`)
-					.map((res) => res.json())
-					.subscribe((data) => {
-						const allTitles = prepareJson.getAllTitles(data.feed.entry);
-
-						console.log(allTitles)
-
-						http.get(`https://spreadsheets.google.com/feeds/cells/${sheetPublicKey}/1/public/basic?alt=json&min-row=1&min-col=${allTitles.length}`)
-							.map((res) => res.json())
-							.subscribe((data) => {
-								console.log(data)
-
-								const rowTitlesAndValues = prepareJson.getRowTitlesAndValues(data.feed.entry);
-								this.rowTitles = rowTitlesAndValues.rowTitles;
-								this.rowValues = rowTitlesAndValues.rowValues;
-
-								this.allTitlesAndValues = prepareJson.getAllTitlesAndValues(data.feed.entry);
-							});
-					});
-
+			.subscribe(async (sheetUrl) => {
+				this.allValues = await sheetDataService.getAllValues(sheetUrl);
+				this.rowValues = sheetDataService.getRowValues(this.allValues);
 			});
 
 	}
