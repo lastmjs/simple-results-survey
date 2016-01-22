@@ -1,11 +1,18 @@
 import {Component} from 'angular2/core';
+import {RouteConfig, RouterOutlet} from 'angular2/router';
 import {ResultsAreaComponent} from '../results-area/results-area.component.ts';
+import {ResultDetailComponent} from '../result-detail/result-detail.component.ts';
 
 @Component({
 	selector: 'app',
-	templateUrl: 'components/app/app.html',
-	directives: [ResultsAreaComponent]
+	templateUrl: 'www/components/app/app.html',
+	directives: [RouterOutlet]
 })
+
+@RouteConfig([
+	{ path: '/', name: 'Results', component: ResultsAreaComponent },
+	{ path: '/detail/:info', name: 'Detail', component:  ResultDetailComponent }
+])
 
 export class AppComponent {
 

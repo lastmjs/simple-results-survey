@@ -2,8 +2,26 @@
 
 <html>
 
-    <head>
-        <meta http-equiv="refresh" content="0; url=http://lastmj.github.io/sheets-webpage/www" />
-    </head>
+	<head>
+		<base href="/">
+
+		<script src="www/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+        <script src="www/dist/angular2.dist.js"></script>
+	</head>
+
+	<body>
+		<app>Loading...</app>
+
+		<style>
+			@import "www/node_modules/ubuntu-fontface-master/ubuntu.min.css";
+
+			body {
+				background-color: rgba(0, 0, 0, .075);
+				font-family: Ubuntu;
+			}
+		</style>
+
+		<script src="www/dist/app.dist.js"></script>
+	</body>
 
 </html>
