@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 @Component({
 	selector: 'app',
-	templateUrl: 'www/components/app/app.html',
+	templateUrl: 'sheets-webpage/www/components/app/app.html',
 	directives: [RouterOutlet]
 })
 
