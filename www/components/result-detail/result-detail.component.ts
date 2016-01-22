@@ -4,24 +4,31 @@ import {RouteParams} from 'angular2/router';
 @Component({
 	selector: 'result-detail',
 	template: `
-		<div *ngFor="#value of values" [innerHTML]="value"></div>
+		<div *ngFor="#item of items">
+			{{item.title}}
+			{{item.value}}
+		</div>
     `
 })
 
 export class ResultDetailComponent {
 
-	public titles;
-	public values;
+	public items;
 
 	private routeParams: RouteParams;
 
 	constructor(routeParams: RouteParams) {
 		this.routeParams = routeParams;
 
-		this.titles = this.routeParams.get('titles');
-		this.values = this.routeParams.get('values');
+		this.items = [];
+
+		this.routeParams.get('items').forEach((element) => {
+			const arrayFromString = element.split(',');
+			this.items.push({
+				title: arrayFromString[0],
+				value: arrayFromString[1]
+			});
+		});
 	}
-
-
 
 }

@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 	selector: 'results-area',
 	template: `
 		<div style="display: flex; flex-direction: row">
-			<div *ngFor="#title of rowTitles" style="flex: 1">
+			<div *ngFor="#title of rowTitles" style="flex: 1; margin-left: 10px">
 				<div [innerHTML]="title.content" style="color: grey; font-size: .75em"></div>
 			</div>
 		</div>
@@ -26,8 +26,7 @@ export class ResultsAreaComponent {
 	public rowTitles;
 	public rowValues;
 
-	private allTitles;
-	private allValues;
+	private allTitlesAndValues;
 	private router: Router;
 
 	constructor(http: Http, prepareJson: PrepareJsonService, router: Router) {
@@ -41,8 +40,7 @@ export class ResultsAreaComponent {
 				this.rowTitles = rowTitlesAndValues.rowTitles;
 				this.rowValues = rowTitlesAndValues.rowValues;
 
-				this.allTitles = prepareJson.getAllTitles(data.feed.entry);
-				this.allValues = prepareJson.getAllValues(data.feed.entry);
+				this.allTitlesAndValues = prepareJson.getAllTitlesAndValues(data.feed.entry);
 			});
 
 	}
@@ -50,8 +48,7 @@ export class ResultsAreaComponent {
 	rowClick(valuesIndex) {
 		this.router.navigate([
 			'Detail', {
-				titles: this.allTitles,
-				values: this.allValues[valuesIndex]
+				items: this.allTitlesAndValues[valuesIndex]
 			}
 		]);
 	}

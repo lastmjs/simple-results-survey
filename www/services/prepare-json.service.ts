@@ -50,45 +50,50 @@ export class PrepareJsonService {
         };
     }
 
-    getAllTitles(entries) {
-        return entries.reduce((prev, curr) => {
+    getAllTitlesAndValues(entries) {
+        const rowTitles = entries.reduce((prev, curr) => {
             //TODO substring(1) assumes the columns will always be single alpha characters A-Z, if the user has more columns this function will break
             if (curr.title.$t.substring(1) === '1') {
-                prev.push(curr.content.$t)
-                return prev;
+                if (/\[.*\]/.test(curr.content.$t)) {
+                    prev.push({
+                        column: curr.title.$t.substring(0, 1),
+                        content: /\[(.*)\]/.exec(curr.content.$t)[1]
+                    });
+                }
+                else {
+                    prev.push({
+                        column: curr.title.$t.substring(0, 1),
+                        content: curr.content.$t
+                    });
+                }
             }
 
             return prev;
         }, []);
-    }
 
-    //TODO this whole function needs to be redone functionally and immutably and maybe recursively
-    getAllValues(entries) {
+        const titlesAndValues = [];
 
-        let values = [];
+        entries.reduce((prev, curr) => {
 
-        let rowNumber = '1';
-        let row = [];
+            const valueColumn = curr.title.$t.substring(0, 1);
+            const valueRow = curr.title.$t.substring(1);
+            const correspondingTitle = rowTitles.find((element) => {
+                return valueRow !== '1' && element.column === valueColumn;
+            });
 
-        //TODO substring(1) assumes the columns will always be single alpha characters A-Z, if the user has more columns this function will break
-        entries.forEach(function(element, index) {
-
-            if (element.title.$t.substring(1) === rowNumber) {
-                row.push(element.content.$t);
-            }
-            else {
-                values.push(row);
-                row = [];
-                row.push(element.content.$t);
-                rowNumber = (+rowNumber + 1).toString();
+            if (correspondingTitle) {
+                prev.push(correspondingTitle.content + ',' + curr.content.$t);
             }
 
-            if (index === entries.length - 1) {
-                values.push(row);
+            if (prev.length === rowTitles.length) {
+                titlesAndValues.push(prev);
+                prev = [];
             }
-        });
 
-        return values.slice(1);
+            return prev;
+        }, []);
+
+        return titlesAndValues;
     }
 
 }
