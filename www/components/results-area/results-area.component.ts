@@ -33,14 +33,22 @@ export class ResultsAreaComponent {
 
 		this.router = router;
 
-		http.get('https://spreadsheets.google.com/feeds/cells/1MJ0qymz3GupiclvulTXgDm1hW03mN9hBCL9_vGakh98/1/public/basic?alt=json')
-			.map((res) => res.json())
+		http.get('sheets-url.txt')
+			.map((res) => res.text())
 			.subscribe((data) => {
-				const rowTitlesAndValues = prepareJson.getRowTitlesAndValues(data.feed.entry);
-				this.rowTitles = rowTitlesAndValues.rowTitles;
-				this.rowValues = rowTitlesAndValues.rowValues;
 
-				this.allTitlesAndValues = prepareJson.getAllTitlesAndValues(data.feed.entry);
+				const sheetPublicKey = /d\/(.*)\/pubhtml/.exec(data)[1];
+
+				http.get(`https://spreadsheets.google.com/feeds/cells/${sheetPublicKey}/1/public/basic?alt=json`)
+					.map((res) => res.json())
+					.subscribe((data) => {
+						const rowTitlesAndValues = prepareJson.getRowTitlesAndValues(data.feed.entry);
+						this.rowTitles = rowTitlesAndValues.rowTitles;
+						this.rowValues = rowTitlesAndValues.rowValues;
+
+						this.allTitlesAndValues = prepareJson.getAllTitlesAndValues(data.feed.entry);
+					});
+
 			});
 
 	}

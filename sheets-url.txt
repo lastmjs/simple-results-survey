@@ -1,5 +1,1 @@
-the actual public url: https://docs.google.com/spreadsheets/d/1MJ0qymz3GupiclvulTXgDm1hW03mN9hBCL9_vGakh98/pubhtml
-
-the api url: https://spreadsheets.google.com/feeds/cells/1MJ0qymz3GupiclvulTXgDm1hW03mN9hBCL9_vGakh98/1/public/basic?alt=json
-
-specifycing rows: https://spreadsheets.google.com/feeds/cells/1MJ0qymz3GupiclvulTXgDm1hW03mN9hBCL9_vGakh98/1/public/basic?min-row=1&max-row=1&alt=json
+https://docs.google.com/spreadsheets/d/1l6weMNo10Y26kLiVPK3c7dSCbgGDXr7LDVsmgoDmq2M/pubhtml
