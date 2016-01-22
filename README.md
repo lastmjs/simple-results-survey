@@ -10,6 +10,7 @@ You now own a copy of the repository code, and you should have a live website up
 
 The only thing left to do is hook up the Google Sheet that contains the Google Form data you would like to display.
 * Make sure to [publish your Google Sheet to the web](https://support.google.com/docs/answer/37579?hl=en)
+* Switch your repository to the gh-pages branch by clicking Branch -> gh-pages
 * Edit the file "sheets-url.txt" in your newly created repo, and completely replace the contents of the file with your public Google Sheet url
 * To change the logo title of your webpage, edit the "page-title.txt" file in your newly created repo
 
