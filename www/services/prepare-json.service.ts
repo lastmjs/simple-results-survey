@@ -82,7 +82,7 @@ export class PrepareJsonService {
             });
 
             if (correspondingTitle) {
-                prev.push(correspondingTitle.content + ',' + curr.content.$t);
+                prev.push(encodeURIComponent(correspondingTitle.content) + ',' + encodeURIComponent(curr.content.$t));
             }
 
             if (prev.length === rowTitles.length) {

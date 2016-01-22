@@ -27,8 +27,8 @@ export class ResultDetailComponent {
 		this.routeParams.get('items').forEach((element) => {
 			const arrayFromString = element.split(',');
 			this.items.push({
-				title: arrayFromString[0],
-				value: arrayFromString[1]
+				title: decodeURIComponent(arrayFromString[0]),
+				value: decodeURIComponent(arrayFromString[1])
 			});
 		});
 	}
