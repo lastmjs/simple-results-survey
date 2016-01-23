@@ -4,6 +4,7 @@ import {ResultsAreaComponent} from '../results-area/results-area.component.ts';
 import {ResultDetailComponent} from '../result-detail/result-detail.component.ts';
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
+import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component.ts';
 
 @Component({
 	selector: 'app',
@@ -13,7 +14,8 @@ import 'rxjs/add/operator/map';
 
 @RouteConfig([
 	{ path: '/', name: 'Results', component: ResultsAreaComponent },
-	{ path: '/detail/:items', name: 'Detail', component:  ResultDetailComponent }
+	{ path: '/detail/:items', name: 'Detail', component:  ResultDetailComponent },
+	{ path: '/privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicyComponent }
 ])
 
 export class AppComponent {
