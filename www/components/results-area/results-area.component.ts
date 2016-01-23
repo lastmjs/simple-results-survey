@@ -9,13 +9,13 @@ import 'rxjs/add/operator/map';
 	template: `
 		<div style="display: flex; flex-direction: row">
 			<div *ngFor="#title of rowTitles" style="flex: 1; margin-left: 10px">
-				<div [innerHTML]="title.content" style="color: grey; font-size: .75em"></div>
+				<div [innerHTML]="title" style="color: grey; font-size: .75em"></div>
 			</div>
 		</div>
 
-		<div *ngFor="#items of rowValues; #i = index" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(i)">
+		<div *ngFor="#value of rowValues; #i = index" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(i)">
 			<div style="display: flex; flex-direction: row">
-				<div *ngFor="#value of items" [innerHTML]="value" style="flex: 1"></div>
+				<div *ngFor="#title of Object.keys(value)" [innerHTML]="value[title]" style="flex: 1"></div>
 			</div>
 		</div>
     `
@@ -23,13 +23,16 @@ import 'rxjs/add/operator/map';
 
 export class ResultsAreaComponent {
 
+	public rowTitles;
 	public rowValues;
+	public Object;
 
 	private allValues;
 	private router: Router;
 
 	constructor(http: Http, sheetDataService: SheetDataService, router: Router) {
 
+		this.Object = Object;
 		this.router = router;
 
 		http.get('sheets-url.txt')
@@ -37,16 +40,15 @@ export class ResultsAreaComponent {
 			.subscribe(async (sheetUrl) => {
 				this.allValues = await sheetDataService.getAllValues(sheetUrl);
 				this.rowValues = sheetDataService.getRowValues(this.allValues);
+				this.rowTitles = Object.keys(this.rowValues[0]);
 			});
 
 	}
 
 	rowClick(valuesIndex) {
-		console.log(this.allTitlesAndValues[valuesIndex])
-
 		this.router.navigate([
 			'Detail', {
-				items: this.allTitlesAndValues[valuesIndex]
+				items: this.allValues[valuesIndex]
 			}
 		]);
 	}

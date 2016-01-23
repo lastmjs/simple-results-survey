@@ -19,6 +19,20 @@ export class SheetDataService {
     }
 
     getRowValues(values) {
+        return values.map(function(element, index) {
 
+            const newValue = Object.keys(element).reduce(function(prev, curr) {
+                const origColumnName = curr;
+
+                if (/\[.*\]/.test(origColumnName)) {
+                    const normalColumnName = /\[(.*)\]/.exec(origColumnName)[1];
+                    prev[normalColumnName] = element[origColumnName];
+                }
+
+                return prev;
+            }, {});
+
+            return newValue;
+        });
     }
 }
