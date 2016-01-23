@@ -1,6 +1,7 @@
-<div style="font-size: 4vw; margin-left: 2.5vw; margin-top: 25px">{{pageTitle}}</div>
+<div style="cursor: pointer; position: absolute; bottom: 1vw; right: 1vw" [routerLink]="['PrivacyPolicy']">Privacy Policy</div>
+
+<div style="font-size: 4vw; margin-left: 2.5vw; margin-top: 25px; cursor: pointer" [routerLink]="['Results']">{{pageTitle}}</div>
 
 <div style="margin-left: 10vw; margin-right: 10vw; margin-top: 50px">
     <router-outlet></router-outlet>
-    <div style="cursor: pointer" [routerLink]="['PrivacyPolicy']">Privacy Policy</a>
 </div>

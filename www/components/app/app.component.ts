@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, RouterOutlet} from 'angular2/router';
+import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
 import {ResultsAreaComponent} from '../results-area/results-area.component.ts';
 import {ResultDetailComponent} from '../result-detail/result-detail.component.ts';
 import {Http} from 'angular2/http';
@@ -9,7 +9,7 @@ import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component
 @Component({
 	selector: 'app',
 	templateUrl: 'www/components/app/app.html',
-	directives: [RouterOutlet]
+	directives: [RouterOutlet, RouterLink]
 })
 
 @RouteConfig([
