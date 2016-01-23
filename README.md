@@ -6,7 +6,7 @@ This repository will allow you to quickly publish a website for displaying Googl
 * Sign up for a GitHub account
 * Fork this repository (click the Fork button on the [repository homepage](https://github.com/lastmj/sheets-webpage))
 
-You now own a copy of the repository code, and you should have a live website up at yourgithubusername.github.io/sheets-webpage
+You now own a copy of the repository code, and you should have a live website up at yourgithubusername.github.io/websheet
 
 The only thing left to do is hook up the Google spreadsheet that contains the data you would like to display.
 * Make sure to [publish your spreadsheet to the web](https://support.google.com/docs/answer/37579?hl=en)
