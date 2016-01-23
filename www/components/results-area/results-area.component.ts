@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 
 		<div *ngFor="#value of rowValues; #i = index" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(i)">
 			<div style="display: flex; flex-direction: row">
-				<div *ngFor="#title of Object.keys(value)" [innerHTML]="value[title]" style="flex: 1"></div>
+				<div *ngFor="#title of rowTitles" [innerHTML]="value[title]" style="flex: 1"></div>
 			</div>
 		</div>
     `
@@ -25,15 +25,15 @@ export class ResultsAreaComponent {
 
 	public rowTitles;
 	public rowValues;
-	public Object;
 
 	private allValues;
 	private router: Router;
+	private sheetDataService: SheetDataService;
 
 	constructor(http: Http, sheetDataService: SheetDataService, router: Router) {
 
-		this.Object = Object;
 		this.router = router;
+		this.sheetDataService = sheetDataService;
 
 		http.get('sheets-url.txt')
 			.map((res) => res.text())
@@ -45,10 +45,11 @@ export class ResultsAreaComponent {
 
 	}
 
-	rowClick(valuesIndex) {
+	rowClick(valuesIndex: number) {
+		console.log(this.allValues[valuesIndex])
 		this.router.navigate([
 			'Detail', {
-				items: this.allValues[valuesIndex]
+				items: this.sheetDataService.prepareValuesForUrl(this.allValues[valuesIndex])
 			}
 		]);
 	}

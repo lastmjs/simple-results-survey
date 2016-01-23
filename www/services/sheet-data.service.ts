@@ -35,4 +35,20 @@ export class SheetDataService {
             return newValue;
         });
     }
+
+    prepareValuesForUrl(value) {
+        return Object.keys(value).map(function(title) {
+            const encodedTitle = encodeTitle(title);
+            
+            return encodedTitle + ',' + encodeURIComponent(value[title]);
+
+            function encodeTitle(title: string) {
+                if (/\[.*\]/.test(title)) {
+                    return encodeURIComponent(/\[(.*)\]/.exec(title)[1]);
+                }
+
+                return encodeURIComponent(title);
+            }
+        });
+    }
 }
