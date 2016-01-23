@@ -2,6 +2,9 @@
 
 This repository will allow you to quickly publish a website for displaying Google Forms data.
 
+## Example
+Checkout what this repo looks like live [here](http://lastmj.github.io/websheet).
+
 ## Setup Instructions
 * Sign up for a GitHub account
 * Fork this repository (click the Fork button on the [repository homepage](https://github.com/lastmj/sheets-webpage))
