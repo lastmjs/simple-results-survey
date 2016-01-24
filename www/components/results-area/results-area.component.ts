@@ -7,8 +7,12 @@ import 'rxjs/add/operator/map';
 @Component({
 	selector: 'results-area',
 	template: `
+		<div style="display: flex; flex-direction: row; margin-bottom: 25px">
+			<input type="text" placeholder="type to search" style="margin-left: 5px; font-size: 2.5vw; outline: none; border: none; background: none; color: rbga(255, 255, 255, .1)" autofocus>
+		</div>
+
 		<div style="display: flex; flex-direction: row">
-			<div *ngFor="#title of rowTitles" style="flex: 1; margin-left: 10px">
+			<div *ngFor="#title of rowTitles" style="flex: 1; margin-left: 5px">
 				<div [innerHTML]="title" style="color: grey; font-size: .75em"></div>
 			</div>
 		</div>
