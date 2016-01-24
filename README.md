@@ -17,7 +17,7 @@ The only thing left to do is hook up the Google spreadsheet that contains the da
 * Edit the file "sheets-url.txt" in your newly created repo, and completely replace the contents of the file with your spreadsheet's public url
 * Commit the file "sheets-url.txt" by clicking commit
 * To change the logo title of your webpage, edit the "page-title.txt" file in your newly created repo and then commit it
-* IMPORTANT: You need to make some kind of change to a file and commit it before your website will be live
+* IMPORTANT: You need to switch your repository to the gh-pages branch and make some kind of change to a file and commit it before your website will be live
 
 ## Displaying Data in Rows
 
