@@ -55,9 +55,19 @@ export class SheetDataService {
 
     searchForInputString(inputString, values) {
         return Observable.create((observer) => {
-            //observer.next(inputString);
+            values.reduce(function(prev, curr) {
 
-            
+                const searchMatch = Object.keys(curr).reduce(function(prev, key) {
+                    return curr[key].toLowerCase().includes(inputString.toLowerCase()) > -1;
+                }, false);
+
+                if (searchMatch) {
+                    prev.push(curr);
+                    observer.next(prev);
+                }
+
+                return prev;
+            }, []);
         });
     }
 }

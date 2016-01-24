@@ -57,7 +57,7 @@ export class ResultsAreaComponent {
 		this.inputData.valueChanges.debounceTime(400).distinctUntilChanged().subscribe((inputString) => {
 			this.sheetDataService.searchForInputString(inputString, this.rowValues).subscribe((values) => {
 				console.log(values)
-				//this.rowValues = values;
+				this.rowValues = values;
 			});
 		});
 	}
