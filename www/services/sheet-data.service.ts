@@ -58,8 +58,18 @@ export class SheetDataService {
             values.reduce(function(prev, curr) {
 
                 const searchMatch = Object.keys(curr).reduce(function(prev, key) {
-                    return curr[key].toLowerCase().includes(inputString.toLowerCase()) > -1;
+                    console.log(inputString.toLowerCase())
+                    console.log(curr[key].toLowerCase())
+                    console.log(curr[key].toLowerCase().indexOf(inputString.toLowerCase()))
+
+                    if (curr[key].toLowerCase().indexOf(inputString.toLowerCase()) > -1) {
+                        return true;
+                    }
+
+                    return prev;
                 }, false);
+
+                console.log(searchMatch)
 
                 if (searchMatch) {
                     prev.push(curr);
