@@ -55,12 +55,13 @@ export class SheetDataService {
 
     searchForInputString(inputString, values) {
         return Observable.create((observer) => {
+            if (inputString === '') {
+                observer.next(values);
+            }
+
             values.reduce(function(prev, curr) {
 
                 const searchMatch = Object.keys(curr).reduce(function(prev, key) {
-                    console.log(inputString.toLowerCase())
-                    console.log(curr[key].toLowerCase())
-                    console.log(curr[key].toLowerCase().indexOf(inputString.toLowerCase()))
 
                     if (curr[key].toLowerCase().indexOf(inputString.toLowerCase()) > -1) {
                         return true;
@@ -68,8 +69,6 @@ export class SheetDataService {
 
                     return prev;
                 }, false);
-
-                console.log(searchMatch)
 
                 if (searchMatch) {
                     prev.push(curr);

@@ -33,6 +33,7 @@ export class ResultsAreaComponent {
 	public inputData: Control;
 
 	private allValues;
+	private savedRowValues;
 	private router: Router;
 	private sheetDataService: SheetDataService;
 
@@ -47,6 +48,7 @@ export class ResultsAreaComponent {
 			.subscribe(async (sheetUrl) => {
 				this.allValues = await sheetDataService.getAllValues(sheetUrl);
 				this.rowValues = sheetDataService.getRowValues(this.allValues);
+				this.savedRowValues = sheetDataService.getRowValues(this.allValues);
 				this.rowTitles = Object.keys(this.rowValues[0]);
 			});
 
@@ -55,8 +57,7 @@ export class ResultsAreaComponent {
 
 	observeSearchInputData() {
 		this.inputData.valueChanges.debounceTime(400).distinctUntilChanged().subscribe((inputString) => {
-			this.sheetDataService.searchForInputString(inputString, this.rowValues).subscribe((values) => {
-				console.log(values)
+			this.sheetDataService.searchForInputString(inputString, this.savedRowValues).subscribe((values) => {
 				this.rowValues = values;
 			});
 		});
