@@ -1,4 +1,5 @@
 import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SheetDataService {
@@ -39,7 +40,7 @@ export class SheetDataService {
     prepareValuesForUrl(value) {
         return Object.keys(value).map(function(title) {
             const encodedTitle = encodeTitle(title);
-            
+
             return encodedTitle + ',' + encodeURIComponent(value[title]);
 
             function encodeTitle(title: string) {
@@ -49,6 +50,14 @@ export class SheetDataService {
 
                 return encodeURIComponent(title);
             }
+        });
+    }
+
+    searchForInputString(inputString, values) {
+        return Observable.create((observer) => {
+            //observer.next(inputString);
+
+            
         });
     }
 }

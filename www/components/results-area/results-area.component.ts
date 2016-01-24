@@ -3,13 +3,14 @@ import {Http} from 'angular2/http';
 import {Router} from 'angular2/router';
 import {SheetDataService} from '../../services/sheet-data.service.ts';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import {Control} from 'angular2/common';
 
 @Component({
 	selector: 'results-area',
 	template: `
-		<div style="display: flex; flex-direction: row; margin-bottom: 25px">
-			<input type="text" placeholder="type to search" style="margin-left: 5px; font-size: 2.5vw; outline: none; border: none; background: none; color: rbga(255, 255, 255, .1)" autofocus>
-		</div>
+		<input type="text" [ngFormControl]="inputData" placeholder="type to search" style="margin-bottom: 25px; width: 100%; margin-left: 5px; font-size: 2.5vw; outline: none; border: none; background: none; color: rbga(255, 255, 255, .1)" autofocus>
 
 		<div style="display: flex; flex-direction: row">
 			<div *ngFor="#title of rowTitles" style="flex: 1; margin-left: 5px">
@@ -29,6 +30,7 @@ export class ResultsAreaComponent {
 
 	public rowTitles;
 	public rowValues;
+	public inputData: Control;
 
 	private allValues;
 	private router: Router;
@@ -38,6 +40,7 @@ export class ResultsAreaComponent {
 
 		this.router = router;
 		this.sheetDataService = sheetDataService;
+		this.inputData = new Control();
 
 		http.get('sheets-url.txt')
 			.map((res) => res.text())
@@ -47,6 +50,16 @@ export class ResultsAreaComponent {
 				this.rowTitles = Object.keys(this.rowValues[0]);
 			});
 
+		this.observeSearchInputData();
+	}
+
+	observeSearchInputData() {
+		this.inputData.valueChanges.debounceTime(400).distinctUntilChanged().subscribe((inputString) => {
+			this.sheetDataService.searchForInputString(inputString, this.rowValues).subscribe((values) => {
+				console.log(values)
+				//this.rowValues = values;
+			});
+		});
 	}
 
 	rowClick(valuesIndex: number) {
