@@ -23,5 +23,8 @@ The only thing left to do is hook up the Google spreadsheet that contains the da
 
 Your data will not display properly in rows on the homepage until you choose which columns from your spreadsheet to include. To include a column, wrap the column value in [], i.e. [Name], [Date of Birth], [Status]. Now the rows on your homepage will display the data for the Name, Date of Birth, and Status columns.
 
+## Using a Custom Domain Name
+You are not stuck with the yourgithubusername.github.io/websheet url. You can use a custom domain name if you like. Follow the instructions [here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/).
+
 ## Terms
 Since when forking this repo you will become a client of a Google api, you must agree to the terms found [here](https://github.com/lastmj/websheet/blob/master/TERMS).
