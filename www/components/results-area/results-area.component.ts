@@ -18,7 +18,7 @@ import {Control} from 'angular2/common';
 			</div>
 		</div>
 
-		<div *ngFor="#value of rowValues; #i = index" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(i)">
+		<div *ngFor="#value of rowValues" style="background-color: white; padding: 20px; box-shadow: 0px 0px 1px grey; margin-top: 10px; margin-bottom: 10px; cursor: pointer" (click)="rowClick(value)">
 			<div style="display: flex; flex-direction: row">
 				<div *ngFor="#title of rowTitles" [innerHTML]="value[title]" style="flex: 1"></div>
 			</div>
@@ -49,7 +49,9 @@ export class ResultsAreaComponent {
 				this.allValues = await sheetDataService.getAllValues(sheetUrl);
 				this.rowValues = sheetDataService.getRowValues(this.allValues);
 				this.savedRowValues = sheetDataService.getRowValues(this.allValues);
-				this.rowTitles = Object.keys(this.rowValues[0]);
+				this.rowTitles = Object.keys(this.rowValues[0]).filter(function(element) {
+					return element !== 'origIndex';
+				});
 			});
 
 		this.observeSearchInputData();
@@ -63,10 +65,10 @@ export class ResultsAreaComponent {
 		});
 	}
 
-	rowClick(valuesIndex: number) {
+	rowClick(value) {
 		this.router.navigate([
 			'Detail', {
-				items: this.sheetDataService.prepareValuesForUrl(this.rowValues[valuesIndex])
+				items: this.sheetDataService.prepareValuesForUrl(this.allValues[value.origIndex])
 			}
 		]);
 	}

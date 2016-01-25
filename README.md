@@ -1,4 +1,4 @@
-# sheets-webpage
+# websheet
 
 This repository will allow you to quickly publish a website for displaying data from public Google Forms spreadsheets.
 

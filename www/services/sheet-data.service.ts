@@ -28,6 +28,7 @@ export class SheetDataService {
                 if (/\[.*\]/.test(origColumnName)) {
                     const normalColumnName = /\[(.*)\]/.exec(origColumnName)[1];
                     prev[normalColumnName] = element[origColumnName];
+                    prev.origIndex = index;
                 }
 
                 return prev;
@@ -63,7 +64,7 @@ export class SheetDataService {
 
                 const searchMatch = Object.keys(curr).reduce(function(prev, key) {
 
-                    if (curr[key].toLowerCase().indexOf(inputString.toLowerCase()) > -1) {
+                    if ((typeof curr[key] !== 'number') && curr[key].toLowerCase().indexOf(inputString.toLowerCase()) > -1) {
                         return true;
                     }
 
