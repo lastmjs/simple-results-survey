@@ -3,7 +3,7 @@
 This repository will allow you to quickly publish a website for displaying data from public Google Forms spreadsheets.
 
 ## Example
-Checkout what this repo looks like live [here](http://lastmjs.github.io/websheet).
+Check out a live example website [here](http://lastmjs.github.io/websheet).
 
 ## Setup Instructions
 * Sign up for a GitHub account
