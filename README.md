@@ -3,11 +3,11 @@
 This repository will allow you to quickly publish a website for displaying data from public Google Forms spreadsheets.
 
 ## Example
-Checkout what this repo looks like live [here](http://lastmj.github.io/websheet).
+Checkout what this repo looks like live [here](http://lastmjs.github.io/websheet).
 
 ## Setup Instructions
 * Sign up for a GitHub account
-* Fork this repository (click the Fork button on the [repository homepage](https://github.com/lastmj/sheets-webpage))
+* Fork this repository (click the Fork button on the [repository homepage](https://github.com/lastmjs/websheet))
 
 You now own a copy of the repository code, and once you hook up your spreadsheet and wait a moment your website will be live at yourgithubusername.github.io/websheet
 
@@ -27,4 +27,4 @@ Your data will not display properly in rows on the homepage until you choose whi
 You are not stuck with the yourgithubusername.github.io/websheet url. You can use a custom domain name if you like. Follow the instructions [here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/).
 
 ## Terms
-Since when forking this repo you will become a client of a Google api, you must agree to the terms found [here](https://github.com/lastmj/websheet/blob/master/TERMS).
+Since when forking this repo you will become a client of a Google api, you must agree to the terms found [here](https://github.com/lastmjs/websheet/blob/master/TERMS).
