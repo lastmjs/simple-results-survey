@@ -66,7 +66,7 @@ export class ResultsAreaComponent {
 	rowClick(valuesIndex: number) {
 		this.router.navigate([
 			'Detail', {
-				items: this.sheetDataService.prepareValuesForUrl(this.allValues[valuesIndex])
+				items: this.sheetDataService.prepareValuesForUrl(this.rowValues[valuesIndex])
 			}
 		]);
 	}
