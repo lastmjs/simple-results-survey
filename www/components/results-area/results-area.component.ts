@@ -1,8 +1,6 @@
 import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
 import {Router} from 'angular2/router';
 import {SheetDataService} from '../../services/sheet-data.service.ts';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {Control} from 'angular2/common';
@@ -37,7 +35,7 @@ export class ResultsAreaComponent {
 	private router: Router;
 	private sheetDataService: SheetDataService;
 
-	constructor(http: Http, sheetDataService: SheetDataService, router: Router) {
+	constructor(sheetDataService: SheetDataService, router: Router) {
 
 		this.router = router;
 		this.sheetDataService = sheetDataService;
