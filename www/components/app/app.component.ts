@@ -5,6 +5,7 @@ import {ResultDetailComponent} from '../result-detail/result-detail.component.ts
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component.ts';
+import {EmbeddedFormComponent} from '../embedded-form/embedded-form.component.ts';
 
 @Component({
 	selector: 'app',
@@ -14,6 +15,7 @@ import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component
 
 @RouteConfig([
 	{ path: '/', name: 'Results', component: ResultsAreaComponent },
+	{ path: '/form', name: 'Form', component:  EmbeddedFormComponent },
 	{ path: '/detail/:items', name: 'Detail', component:  ResultDetailComponent },
 	{ path: '/privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicyComponent }
 ])

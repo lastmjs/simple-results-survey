@@ -3,8 +3,9 @@
 <div style="cursor: pointer; position: fixed; bottom: 1vw; right: 1vw" [routerLink]="['PrivacyPolicy']">Privacy Policy</div>
 <div style="cursor: pointer; position: fixed; bottom: 1vw; left: 1vw">More by <a href="http://lastmjs.github.io/">lastmjs</a></div>
 
-<div style="font-size: 4vw; margin-left: 2.5vw; margin-top: 25px; cursor: pointer" [routerLink]="['Results']">{{pageTitle}}</div>
+<div style="font-size: 3vw; margin-left: 2.5vw; margin-top: 25px; cursor: pointer" [routerLink]="['Results']">{{pageTitle}}</div>
 
-<div style="margin-left: 10vw; margin-right: 10vw; margin-top: 50px">
+<div id="main-container" style="margin-left: 10vw; margin-right: 10vw; margin-top: 50px">
+    <div [routerLink]="['Form']">View Form</div>
     <router-outlet></router-outlet>
 </div>
