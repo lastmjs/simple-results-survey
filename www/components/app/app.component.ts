@@ -2,10 +2,9 @@ import {Component} from 'angular2/core';
 import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
 import {ResultsAreaComponent} from '../results-area/results-area.component.ts';
 import {ResultDetailComponent} from '../result-detail/result-detail.component.ts';
-import {Http} from 'angular2/http';
-import 'rxjs/add/operator/map';
 import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component.ts';
 import {EmbeddedFormComponent} from '../embedded-form/embedded-form.component.ts';
+import {TxtFileDataService} from '../../services/txt-file-data.service.ts';
 
 @Component({
 	selector: 'app',
@@ -22,16 +21,12 @@ import {EmbeddedFormComponent} from '../embedded-form/embedded-form.component.ts
 
 export class AppComponent {
 
-	public pageTitle = '';
+	public pageTitle: string;
 
-	constructor(http: Http) {
-
-		http.get('page-title.txt')
-			.map((res) => res.text())
-			.subscribe((data) => {
-				this.pageTitle = data;
-			});
-
+	constructor(txtFileDataService: TxtFileDataService) {
+		txtFileDataService.loadPageTitle().subscribe((data) => {
+			this.pageTitle = data;
+		});
 	}
 
 }

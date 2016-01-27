@@ -1,20 +1,20 @@
 {
-  "name": "sheets-webpage",
+  "name": "simple-results",
   "version": "0.0.0",
-  "description": "Searchable front-end for Google Sheets created from Google Forms, written in Angular 2",
+  "description": "Searchable front-end for Google Sheets data created from Google Forms input, written in Angular 2",
   "scripts": {
       "webpack": "webpack --progress --profile --colors --display-error-details --display-cached",
       "start": "npm run webpack && http-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lastmj/sheets-webpage.git"
+    "url": "git+https://github.com/lastmj/simple-results.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lastmj/sheets-webpage/issues"
+    "url": "https://github.com/lastmj/simple-results/issues"
   },
-  "homepage": "https://github.com/lastmj/sheets-webpage#readme",
+  "homepage": "https://github.com/lastmj/simple-results#readme",
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.1",

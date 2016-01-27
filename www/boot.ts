@@ -4,5 +4,6 @@ import {ResultsAreaComponent} from './components/results-area/results-area.compo
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {SheetDataService} from './services/sheet-data.service.ts';
+import {TxtFileDataService} from './services/txt-file-data.service.ts';
 
-bootstrap(AppComponent, [ResultsAreaComponent, HTTP_PROVIDERS, ROUTER_PROVIDERS, SheetDataService]);
+bootstrap(AppComponent, [ResultsAreaComponent, HTTP_PROVIDERS, ROUTER_PROVIDERS, SheetDataService, TxtFileDataService]);
