@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {Location} from 'angular2/router';
 
 @Component({
 	selector: 'embedded-form',
@@ -11,8 +12,8 @@ import {Component} from 'angular2/core';
 
 export class EmbeddedFormComponent {
 
-	constructor() {
-        console.log(document.getElementById('main-container'));
+	constructor(location: Location) {
+        console.log(location.path());
 	}
 
 }

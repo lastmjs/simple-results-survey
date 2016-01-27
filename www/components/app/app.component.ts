@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
+import {RouteConfig, RouterOutlet, RouterLink, Location} from 'angular2/router';
 import {ResultsAreaComponent} from '../results-area/results-area.component.ts';
 import {ResultDetailComponent} from '../result-detail/result-detail.component.ts';
 import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component.ts';
@@ -22,8 +22,14 @@ import {TxtFileDataService} from '../../services/txt-file-data.service.ts';
 export class AppComponent {
 
 	public pageTitle: string;
+	public location: Location;
 
-	constructor(txtFileDataService: TxtFileDataService) {
+	constructor(txtFileDataService: TxtFileDataService, location: Location) {
+
+		this.location = location;
+
+		console.log(location.path())
+
 		txtFileDataService.loadPageTitle().subscribe((data) => {
 			this.pageTitle = data;
 		});
