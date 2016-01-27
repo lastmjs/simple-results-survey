@@ -14,7 +14,7 @@ You now own a copy of the repository code, and once you hook up your spreadsheet
 The only thing left to do is hook up the Google spreadsheet that contains the data you would like to display.
 * Make sure to [publish your spreadsheet to the web](https://support.google.com/docs/answer/37579?hl=en)
 * Switch your repository to the gh-pages branch by clicking Branch -> gh-pages
-* Edit the file "sheets-url.txt" in your newly created repo, and completely replace the contents of the file with your spreadsheet's public url
+* Edit the file "spreadsheet-url.txt" in your newly created repo, and completely replace the contents of the file with your spreadsheet's public url
 * Commit the file "sheets-url.txt" by clicking commit
 * To change the logo title of your webpage, edit the "page-title.txt" file in your newly created repo and then commit it
 * IMPORTANT: You need to switch your repository to the gh-pages branch and make some kind of change to a file and commit it before your website will be live
