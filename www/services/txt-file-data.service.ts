@@ -16,7 +16,7 @@ export class TxtFileDataService {
         return Observable.create((observer) => {
             this.http.get('spreadsheet-url.txt')
     			.map((res) => res.text())
-    			.subscribe(async (data) => {
+    			.subscribe((data) => {
     				observer.next(data);
     			});
         });
@@ -26,8 +26,17 @@ export class TxtFileDataService {
         return Observable.create((observer) => {
             this.http.get('form-url.txt')
     			.map((res) => res.text())
-    			.subscribe(async (data) => {
-    				observer.next(data);
+    			.subscribe((data) => {
+
+                    const results = /\/d\/(.*)\//.exec(data);
+
+                    if (results) {
+                        const url = results[1];
+                        observer.next(url);
+                        return;
+                    }
+
+                    observer.next(null);
     			});
         });
     }
