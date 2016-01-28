@@ -18,6 +18,7 @@ The only thing left to do is hook up the Google spreadsheet url that contains th
 * Switch your repository to the gh-pages branch by clicking Branch -> gh-pages in the top left corner
 * Edit the file "spreadsheet-url.txt" in your newly created repo, and completely replace the contents of the file with your spreadsheet's public url
 * Commit the file "spreadsheet-url.txt" by clicking Commit changes
+* Edit the file "form-url.txt" and completely replace the contents of the file with your form's public url
 * To change the logo title of your webpage, edit the "page-title.txt" file in your newly created repo and then commit the changes
 * Your website should shortly be live at yourgithubusername.github.io/simple-results
 
@@ -25,7 +26,7 @@ The only thing left to do is hook up the Google spreadsheet url that contains th
 
 Your data will not display on the homepage until you choose which columns from your spreadsheet to include in the homepage rows:
 * Go to your spreadsheet
-* To include a column, wrap the column value [], i.e. [Name], [Date of Birth], [Status]. 
+* To include a column, wrap the column value in [], i.e. [Name], [Date of Birth], [Status]. 
 * Now the rows on your homepage will display the data for the Name, Date of Birth, and Status columns
 * IMPORTANT: Every time you edit your form, you will have to re-wrap the columns in square brackets
 
