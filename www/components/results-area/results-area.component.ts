@@ -1,8 +1,7 @@
 import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
 import {Router} from 'angular2/router';
 import {SheetDataService} from '../../services/sheet-data.service.ts';
-import 'rxjs/add/operator/map';
+import {TxtFileDataService} from '../../services/txt-file-data.service.ts';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {Control} from 'angular2/common';
@@ -37,22 +36,20 @@ export class ResultsAreaComponent {
 	private router: Router;
 	private sheetDataService: SheetDataService;
 
-	constructor(http: Http, sheetDataService: SheetDataService, router: Router) {
+	constructor(sheetDataService: SheetDataService, txtFileDataService: TxtFileDataService, router: Router) {
 
 		this.router = router;
 		this.sheetDataService = sheetDataService;
 		this.inputData = new Control();
 
-		http.get('sheets-url.txt')
-			.map((res) => res.text())
-			.subscribe(async (sheetUrl) => {
-				this.allValues = await sheetDataService.getAllValues(sheetUrl);
-				this.rowValues = sheetDataService.getRowValues(this.allValues);
-				this.savedRowValues = sheetDataService.getRowValues(this.allValues);
-				this.rowTitles = Object.keys(this.rowValues[0]).filter(function(element) {
-					return element !== 'origIndex';
-				});
+		txtFileDataService.loadSpreadsheetUrl().subscribe(async (data) => {
+			this.allValues = await sheetDataService.getAllValues(data);
+			this.rowValues = sheetDataService.getRowValues(this.allValues);
+			this.savedRowValues = sheetDataService.getRowValues(this.allValues);
+			this.rowTitles = Object.keys(this.rowValues[0]).filter(function(element) {
+				return element !== 'origIndex';
 			});
+		});
 
 		this.observeSearchInputData();
 	}
