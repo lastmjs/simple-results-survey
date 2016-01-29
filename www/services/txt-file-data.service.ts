@@ -35,8 +35,6 @@ export class TxtFileDataService {
                         observer.next(url);
                         return;
                     }
-
-                    observer.next(null);
     			});
         });
     }
