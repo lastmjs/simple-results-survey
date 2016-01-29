@@ -15,6 +15,8 @@ export class EmbeddedFormComponent {
 	public formUrl: string;
 
 	constructor(txtFileDataService: TxtFileDataService) {
+		this.formUrl = 'loading.html';
+
 		txtFileDataService.loadFormUrl().subscribe((partialUrl) => {
 			if (partialUrl) {
 				this.formUrl = `https://docs.google.com/forms/d/${partialUrl}/viewform?embedded=true#start=embed`;
