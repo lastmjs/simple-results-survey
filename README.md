@@ -34,4 +34,5 @@ Your data will not display on the homepage until you choose which columns from y
 You are not stuck with the yourgithubusername.github.io/simple-results url. You can use a custom domain name if you like. Follow the instructions [here](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/).
 
 ## Terms
-Since when forking this repo you will become a client of a Google api, you must agree to the terms found [here](https://github.com/lastmjs/simple-results/blob/master/TERMS).
+* Since when forking this repo you will become a client of a Google api, you must agree to the terms found [here](https://github.com/lastmjs/simple-results/blob/master/TERMS).
+* You also agree to allow the displaying of messages on your site from me, lastmjs. These messages may be promotional or informational.
